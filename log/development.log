@@ -1,0 +1,227 @@
+  [4;36;1mSQL (14.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2010-07-05 20:53:07) [GET]
+  [4;36;1mSQL (39.1ms)[0m   [0;1mSHOW TABLES[0m
+Completed in 112ms (View: 8, DB: 54) | 200 OK [http://0.0.0.0/rails/info/properties]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 20:53:28) [GET]
+
+ActionController::RoutingError (No route matches "/loja" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (321.4ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (67.0ms)[0m   [0;1mSHOW KEYS FROM `schema_migrations`[0m
+  [4;35;1mSQL (75.4ms)[0m   [0mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CriarProdutos (20100705235647)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CriarProdutos (20100705235647)
+  [4;36;1mSQL (65.9ms)[0m   [0;1mCREATE TABLE `produtos` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `nome` varchar(100) NOT NULL, `descricao` text, `preco` decimal(10,2) NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (19.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100705235647')[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (73.8ms)[0m   [0mSHOW FIELDS FROM `produtos`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mdescribe `produtos`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `produtos`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mProduto Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `produtos`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mProduto Create (27.1ms)[0m   [0;1mINSERT INTO `produtos` (`created_at`, `nome`, `updated_at`, `preco`, `descricao`) VALUES('2010-07-06 00:39:22', 'Livro', '2010-07-06 00:39:22', 15.16, NULL)[0m
+  [4;35;1mSQL (5.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mProduto Load (0.5ms)[0m   [0;1mSELECT * FROM `produtos` LIMIT 1[0m
+  [4;35;1mProduto Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `produtos`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mProduto Create (0.6ms)[0m   [0mINSERT INTO `produtos` (`created_at`, `nome`, `updated_at`, `preco`, `descricao`) VALUES('2010-07-06 00:45:53', 'Livro de Java', '2010-07-06 00:45:53', 5.0, NULL)[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mProduto Load (0.7ms)[0m   [0mSELECT * FROM `produtos` [0m
+  [4;36;1mProduto Load (0.2ms)[0m   [0;1mSELECT * FROM `produtos` [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 22:08:41) [GET]
+
+ActionController::RoutingError (No route matches "/loja" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ProdutosController#show (for 127.0.0.1 at 2010-07-05 22:09:53) [GET]
+
+ActionController::UnknownAction (No action responded to show. Actions: index):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 22:09:57) [GET]
+
+ActionController::RoutingError (No route matches "/produto" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ProdutosController#show (for 127.0.0.1 at 2010-07-05 22:10:09) [GET]
+
+ActionController::UnknownAction (No action responded to show. Actions: index):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ProdutosController#show (for 127.0.0.1 at 2010-07-05 22:10:31) [GET]
+
+ActionController::UnknownAction (No action responded to show. Actions: index):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ProdutosController#show (for 127.0.0.1 at 2010-07-05 22:10:32) [GET]
+
+ActionController::UnknownAction (No action responded to show. Actions: index):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ProdutosController#show (for 127.0.0.1 at 2010-07-05 22:10:48) [GET]
+
+ActionController::UnknownAction (No action responded to show. Actions: index):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ProdutosController#index (for 127.0.0.1 at 2010-07-05 22:11:40) [GET]
+  [4;36;1mProduto Load (0.4ms)[0m   [0;1mSELECT * FROM `produtos` [0m
+Rendering template within layouts/application
+Rendering produtos/index
+  [4;35;1mProduto Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `produtos`[0m
+Completed in 54ms (View: 38, DB: 3) | 200 OK [http://localhost/produtos]
+  [4;36;1mSQL (21.7ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (13.6ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ProdutosController#index (for 127.0.0.1 at 2010-07-07 19:52:47) [GET]
+  [4;36;1mProduto Load (50.9ms)[0m   [0;1mSELECT * FROM `produtos` [0m
+Rendering template within layouts/application
+Rendering produtos/index
+  [4;35;1mProduto Columns (2.5ms)[0m   [0mSHOW FIELDS FROM `produtos`[0m
+Completed in 131ms (View: 63, DB: 89) | 200 OK [http://localhost/produtos]
+  [4;36;1mSQL (3.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ProdutosController#index to xml (for 127.0.0.1 at 2010-07-07 19:55:14) [GET]
+  [4;36;1mProduto Load (0.3ms)[0m   [0;1mSELECT * FROM `produtos` [0m
+  [4;35;1mProduto Columns (2.6ms)[0m   [0mSHOW FIELDS FROM `produtos`[0m
+Completed in 56ms (View: 39, DB: 6) | 200 OK [http://localhost/produtos.xml]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ProdutosController#index to xml (for 127.0.0.1 at 2010-07-07 19:55:20) [GET]
+  [4;36;1mProduto Load (0.3ms)[0m   [0;1mSELECT * FROM `produtos` [0m
+  [4;35;1mProduto Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `produtos`[0m
+Completed in 156ms (View: 139, DB: 3) | 200 OK [http://localhost/produtos.xml]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ProdutosController#index to xml (for 127.0.0.1 at 2010-07-07 19:56:43) [GET]
+  [4;36;1mProduto Load (0.4ms)[0m   [0;1mSELECT * FROM `produtos` [0m
+  [4;35;1mProduto Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `produtos`[0m
+Completed in 34ms (View: 15, DB: 3) | 200 OK [http://localhost/produtos.xml]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ProdutosController#index (for 127.0.0.1 at 2010-07-07 20:12:38) [GET]
+  [4;36;1mProduto Load (0.4ms)[0m   [0;1mSELECT * FROM `produtos` [0m
+Rendering template within layouts/application
+Rendering produtos/index
+  [4;35;1mProduto Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `produtos`[0m
+Completed in 64ms (View: 47, DB: 3) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ProdutosController#index (for 127.0.0.1 at 2010-07-07 21:04:05) [GET]
+  [4;36;1mProduto Load (0.4ms)[0m   [0;1mSELECT * FROM `produtos` [0m
+Rendering template within layouts/application
+Rendering produtos/index
+  [4;35;1mProduto Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `produtos`[0m
+Completed in 154ms (View: 137, DB: 2) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (145.8ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (64.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CriarProdutos (20100705235647)
+Migrating to CriarPedidosEItens (20100708003110)
+  [4;36;1mSQL (185.6ms)[0m   [0;1mCREATE TABLE `pedidos` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (15.8ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CriarProdutos (20100705235647)
+Migrating to CriarPedidosEItens (20100708003110)
+  [4;36;1mSQL (22.0ms)[0m   [0;1mCREATE TABLE `pedidos` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY) ENGINE=InnoDB[0m
+  [4;35;1mSQL (19.4ms)[0m   [0mCREATE TABLE `itens` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `produto_id` int(11) NOT NULL, `pedido_id` int(11) NOT NULL, `quantidade` int(11) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mMysql::Error: Table 'loja_development.index' doesn't exist: SHOW KEYS FROM `index`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CriarProdutos (20100705235647)
+Migrating to CriarPedidosEItens (20100708003110)
+  [4;36;1mSQL (31.3ms)[0m   [0;1mCREATE TABLE `pedidos` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY) ENGINE=InnoDB[0m
+  [4;35;1mSQL (18.3ms)[0m   [0mCREATE TABLE `itens` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `produto_id` int(11) NOT NULL, `pedido_id` int(11) NOT NULL, `quantidade` int(11) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `itens`[0m
+  [4;35;1mSQL (25.2ms)[0m   [0mCREATE INDEX `index_itens_on_pedido_id` ON `itens` (`pedido_id`)[0m
+  [4;36;1mSQL (30.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100708003110')[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW FIELDS FROM `itens`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mdescribe `itens`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `itens`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `pedidos`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `pedidos`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `pedidos`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `produtos`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `produtos`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `produtos`[0m

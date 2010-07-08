@@ -1,0 +1,241 @@
+Script iniciado em Seg 05 Jul 2010 21:00:32 BRT
+]0;linuxfi@linuxfi-desktop: ~/NetBeansProjects/lojalinuxfi@linuxfi-desktop:~/NetBeansProjects/loja$ sudo ps -aux[Kscript/Ge[K[Kgenerate 
+Usage: script/generate generator [options] [args]
+
+Rails Info:
+    -v, --version                    Show the Rails version number and quit.
+    -h, --help                       Show this help message and quit.
+
+General Options:
+    -p, --pretend                    Run but do not make any changes.
+    -f, --force                      Overwrite files that already exist.
+    -s, --skip                       Skip files that already exist.
+    -q, --quiet                      Suppress normal output.
+    -t, --backtrace                  Debugging: show backtrace on errors.
+    -c, --svn                        Modify files with subversion. (Note: svn must be in path)
+    -g, --git                        Modify files with git. (Note: git must be in path)
+
+
+Installed Generators
+  Rubygems: cucumber, culerity, feature, paperclip, sunspot
+  Builtin: controller, helper, integration_test, mailer, metal, migration, model, observer, performance_test, plugin, resource, scaffold, session_migration
+
+More are available at http://wiki.rubyonrails.org/rails/pages/AvailableGenerators
+  1. Download, for example, login_generator.zip
+  2. Unzip to directory /home/linuxfi/.rails/generators/login
+     to use the generator with all your Rails apps
+     or to /home/linuxfi/NetBeansProjects/loja/lib/generators/login
+     to use with this app only.
+  3. Run generate with no arguments for usage information
+       script/generate login
+
+Generator gems are also available:
+  1. gem search -r generator
+  2. gem install login_generator
+  3. script/generate login
+
+]0;linuxfi@linuxfi-desktop: ~/NetBeansProjects/lojalinuxfi@linuxfi-desktop:~/NetBeansProjects/loja$ rake db/migrate/
+(in /home/linuxfi/NetBeansProjects/loja)
+]0;linuxfi@linuxfi-desktop: ~/NetBeansProjects/lojalinuxfi@linuxfi-desktop:~/NetBeansProjects/loja$ rake db/migrate/[K[K[K[K[K[K[K[K[K:migrt[Kate
+(in /home/linuxfi/NetBeansProjects/loja)
+==  CriarProdutos: migrating ==================================================
+-- create_table(:produtos)
+-- null()
+rake aborted!
+An error has occurred, all later migrations canceled:
+
+undefined method `null' for #<ActiveRecord::ConnectionAdapters::MysqlAdapter:0xb6e72a00>
+
+(See full trace by running task with --trace)
+]0;linuxfi@linuxfi-desktop: ~/NetBeansProjects/lojalinuxfi@linuxfi-desktop:~/NetBeansProjects/loja$ rake db:migrate
+(in /home/linuxfi/NetBeansProjects/loja)
+==  CriarProdutos: migrating ==================================================
+-- create_table(:produtos)
+   -> 0.0671s
+==  CriarProdutos: migrated (0.0673s) =========================================
+
+]0;linuxfi@linuxfi-desktop: ~/NetBeansProjects/lojalinuxfi@linuxfi-desktop:~/NetBeansProjects/loja$ history
+    1  ping barao.homelinux.org
+    2  exit
+    3  ssh -l linuxfi barao.homelinux.org -p122
+    4  ping barao.homelinux.org 
+    5  ssh -l linuxfi armazempb.com.br -p122
+    6  ls
+    7  ruby
+    8  clear
+    9  ls
+   10  vi inst
+   11  ls
+   12  su -
+   13  sudo apt-get remove flashplugin-nonfree
+   14  cat /etc/apt/sources.list
+   15  su -
+   16  sudo passwd root
+   17  su - 
+   18  history | grep apt
+   19  ls
+   20  su -
+   21  ls
+   22  su -
+   23  lynx
+   24  apt-get install lynx links iptraf rpl procinfo nmap traceroute tcpdump
+   25  sudo apt-get install lynx links iptraf rpl procinfo nmap traceroute tcpdump
+   26  exit
+   27  irb
+   28  sudo apt-get install irb
+   29  irb
+   30  115
+   31  irb
+   32  xit
+   33  exit
+   34  user
+   35  users
+   36  sudo chown -r linuxfi:linuxfi /usr/local/glassfish-3.0.1/
+   37  sudo chown -R linuxfi:linuxfi /usr/local/glassfish-3.0.1/
+   38  ~ps -al
+   39  sudo ps -all
+   40  su
+   41  sudo ps -all
+   42  sudo su
+   43  sudo ps -aux
+   44  script/generate 
+   45  rake db/migrate/
+   46  rake db:migrate
+   47  history
+]0;linuxfi@linuxfi-desktop: ~/NetBeansProjects/lojalinuxfi@linuxfi-desktop:~/NetBeansProjects/loja$ historyrake db:migrate:redo[13Phistory[K[K[K[K[K[K[Kscript/console 
+Loading development environment (Rails 2.3.8)
+>> Produto.crateeate[C[C[C :nome => 'Livro', Preco:Preco[1Precopreco[C[C[C[C => 15.16
+NoMethodError: undefined method `ActiveRecord' for #<Object:0xb78bd94c>
+	from /home/linuxfi/NetBeansProjects/loja/app/models/produto.rb:1
+	from /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:380:in `load_without_new_constant_marking'
+	from /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:380:in `load_file'
+	from /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:521:in `new_constants_in'
+	from /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:379:in `load_file'
+	from /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:259:in `require_or_load'
+	from /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:425:in `load_missing_constant'
+	from /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:80:in `const_missing'
+	from /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:92:in `const_missing'
+	from (irb):1
+>> Produto.create :nome => 'Livro', :preco => 15.16[1@i[1@d[C[1@:[1@1[1@,[1@ 
+SyntaxError: compile error
+(irb):2: syntax error, unexpected tINTEGER, expecting tSTRING_CONTENT or tSTRING_DBEG or tSTRING_DVAR or tSTRING_END
+Produto.create id:1, :nome => 'Livro', :preco => 15.16
+                   ^
+	from (irb):2
+>> Produto.create id:1, :nome => 'Livro', :preco => 15.16[1@:[1P[C[C[C[1@i[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P 15.16[C[C[C[1P15.16[C[C[C[1P5.16[1P.16[1P16[1P6[KProduto.create :nome => 'Livro', :preco => 15.16
+NoMethodError: undefined method `ActiveRecord' for #<Object:0xb78bd94c>
+	from /home/linuxfi/NetBeansProjects/loja/app/models/produto.rb:1
+	from /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:380:in `load_without_new_constant_marking'
+	from /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:380:in `load_file'
+	from /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:521:in `new_constants_in'
+	from /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:379:in `load_file'
+	from /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:259:in `require_or_load'
+	from /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:425:in `load_missing_constant'
+	from /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:80:in `const_missing'
+	from /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:92:in `const_missing'
+	from (irb):3
+>> Produto.create :nome => 'Livro', :preco => 15.16
+=> #<Produto id: 1, nome: "Livro", descricao: nil, preco: #<BigDecimal:b713fe54,'0.1516E2',8(8)>, created_at: "2010-07-06 00:39:22", updated_at: "2010-07-06 00:39:22">
+>> Produtp[Ko.first.n
+Produto.first.n
+Produto.first.n=
+Produto.first.nOE_element_def
+Produto.first.nO_element_def
+Produto.first.name
+Produto.first.name=
+Produto.first.name_prefix
+Produto.first.named_route
+Produto.first.named_routes
+Produto.first.named_routes=
+Produto.first.named_scope
+Produto.first.names
+Produto.first.namespace
+Produto.first.nan?
+Produto.first.native_database_types
+Produto.first.needs_encoding?
+Produto.first.neg
+Produto.first.neg=
+Produto.first.negotiate
+Produto.first.nested_attributes_options
+Produto.first.nesting_name_prefix
+Produto.first.nesting_path_prefix
+Produto.first.new
+--More--[KProduto.first.new?
+--More--
+[1]+  Parado                  script/console
+]0;linuxfi@linuxfi-desktop: ~/NetBeansProjects/lojalinuxfi@linuxfi-desktop:~/NetBeansProjects/loja$ script/console [8Phistoryrake db:migrate:redo[4P/migrate/script/generate rake db/migrate/:migrate:redo[13Phistoryscript/console [Kscript/console [Kscript/console [8Phistoryrake db:migrate:redo[4P/migrate/script/generate [4Pudo ps -auxcript/generate rake db/migrate/:migrate:redo[13Phistoryscript/console [Kscript/console 
+Loading development environment (Rails 2.3.8)
+>> Proc[Kdi[Kuto[K[K[K[K[K[K[Kpro
+proc               protected_methods  
+>> pro[K[K[KProduto.first.name
+NoMethodError: undefined method `name' for #<Produto:0xb70601a0>
+	from /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/attribute_methods.rb:264:in `method_missing'
+	from (irb):1
+>> Produto.first.name[C[C[C[KProduto.first.name[C[C[C[Kproduto = Produto.new
+=> #<Produto id: nil, nome: nil, descricao: nil, preco: nil, created_at: nil, updated_at: nil>
+>> produto = Produto.new[C[C[C[Kproduto.nome = "[K'Livro de Java'
+=> "Livro de Java"
+>> produto.nome = 'Livro de Java'[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kpreco = 5
+=> 5
+>> produto
+=> #<Produto id: nil, nome: "Livro de Java", descricao: nil, preco: #<BigDecimal:b7041ed0,'0.5E1',4(8)>, created_at: nil, updated_at: nil>
+>> produto.save
+=> true
+>> produto.all
+NoMethodError: undefined method `all' for #<Produto:0xb704df8c>
+	from /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/attribute_methods.rb:264:in `method_missing'
+	from (irb):7
+>> produto.all[C[C[CPproduto.all[C[C[C[C[1Produto.all[C[C[C[C
+=> [#<Produto id: 1, nome: "Livro", descricao: nil, preco: #<BigDecimal:b7031c38,'0.1516E2',8(8)>, created_at: "2010-07-06 00:39:22", updated_at: "2010-07-06 00:39:22">, #<Produto id: 2, nome: "Livro de Java", descricao: nil, preco: #<BigDecimal:b703156c,'0.5E1',4(8)>, created_at: "2010-07-06 00:45:53", updated_at: "2010-07-06 00:45:53">]
+>> Produto.al
+Produto.alias_attribute                Produto.all
+Produto.alias_attribute_with_dirty     Produto.allocate
+Produto.alias_attribute_without_dirty  Produto.allow_concurrency
+Produto.alias_method_chain             Produto.allow_concurrency=
+>> Produto.all
+Produto.all                 Produto.allow_concurrency
+Produto.allocate            Produto.allow_concurrency=
+>> Produto.all.map {}|}p}|} }p}.}n}o},}m}e}[1P}[1P}[1P}m}e}[1@ [C[C[C[C[C[C[C[C[C[C }
+=> ["Livro", "Livro de Java"]
+>> exit
+]0;linuxfi@linuxfi-desktop: ~/NetBeansProjects/lojalinuxfi@linuxfi-desktop:~/NetBeansProjects/loja$ rake roiu[K[K[Koutes
+(in /home/linuxfi/NetBeansProjects/loja)
+ new_produtos GET    /produtos/new(.:format)            {:controller=>"produtos", :action=>"new"}
+edit_produtos GET    /produtos/edit(.:format)           {:controller=>"produtos", :action=>"edit"}
+     produtos GET    /produtos(.:format)                {:controller=>"produtos", :action=>"show"}
+              PUT    /produtos(.:format)                {:controller=>"produtos", :action=>"update"}
+              DELETE /produtos(.:format)                {:controller=>"produtos", :action=>"destroy"}
+              POST   /produtos(.:format)                {:controller=>"produtos", :action=>"create"}
+                     /:controller/:action/:id           
+                     /:controller/:action/:id(.:format) 
+]0;linuxfi@linuxfi-desktop: ~/NetBeansProjects/lojalinuxfi@linuxfi-desktop:~/NetBeansProjects/loja$ script/server 
+=> Booting Mongrel
+=> Rails 2.3.8 application starting on http://0.0.0.0:3000
+=> Call with -d to detach
+=> Ctrl-C to shutdown server
+Exiting
+/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/tcphack.rb:12:in `initialize_without_backlog': Address already in use - bind(2) (Errno::EADDRINUSE)
+	from /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/tcphack.rb:12:in `initialize'
+	from /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:93:in `new'
+	from /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:93:in `initialize'
+	from /usr/lib/ruby/gems/1.8/gems/rack-1.1.0/lib/rack/handler/mongrel.rb:10:in `new'
+	from /usr/lib/ruby/gems/1.8/gems/rack-1.1.0/lib/rack/handler/mongrel.rb:10:in `run'
+	from /usr/lib/ruby/gems/1.8/gems/rails-2.3.8/lib/commands/server.rb:111
+	from /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+	from /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+	from script/server:3
+]0;linuxfi@linuxfi-desktop: ~/NetBeansProjects/lojalinuxfi@linuxfi-desktop:~/NetBeansProjects/loja$ script/server exit
+=> Booting Mongrel
+=> Rails 2.3.8 application starting on http://0.0.0.0:3000
+=> Call with -d to detach
+=> Ctrl-C to shutdown server
+^Z
+[2]+  Parado                  script/server exit
+]0;linuxfi@linuxfi-desktop: ~/NetBeansProjects/lojalinuxfi@linuxfi-desktop:~/NetBeansProjects/loja$ exit
+exit
+Existem trabalhos parados.
+]0;linuxfi@linuxfi-desktop: ~/NetBeansProjects/lojalinuxfi@linuxfi-desktop:~/NetBeansProjects/loja$ exit
+exit
+Exiting
+
+Script concluído em Seg 05 Jul 2010 22:17:37 BRT

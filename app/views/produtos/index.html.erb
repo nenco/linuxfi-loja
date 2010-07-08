@@ -1,0 +1,16 @@
+<%  content_for :cabecalho do %>
+Listagem de de Produtos
+<%end%>
+
+<% unless @produtos.blank? %>
+
+  <ul>
+    <% @produtos.each do |produto| %>
+      <li><%= produto.nome %> </li>
+    <%  end %>
+
+  </ul>
+
+<%  else %>
+  <p> Não há produtos no sistema.</p>
+<%  end %>

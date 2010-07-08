@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <title>Loja - <%= @titulo %> </title>
+  <%= yield :stylesheets %>
+
+    
+
+  </head>
+  <body>
+    <h1>Loja - <%= yield :cabecaçho %>  | Loja </h1>
+
+    <%= yield %>
+  </body>
+</html>
