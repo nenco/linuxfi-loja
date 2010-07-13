@@ -1,14 +1,21 @@
 <html>
   <head>
     <title>Loja - <%= @titulo %> </title>
-  <%= yield :stylesheets %>
+    <%= yield :stylesheets %>
 
-    
+
 
   </head>
   <body>
-    <h1>Loja - <%= yield :cabecaçho %>  | Loja </h1>
+    <h1>Loja - <%= yield :cabecalho %>  | Loja </h1>
+
+    <%  unless flash.blank? %>
+      <%flash.each do |key,value| %>
+        <p class="flash_<%= key %>"> <%= value %> </p>
+      <%end%>
+    <% end %>
 
     <%= yield %>
+
   </body>
 </html>

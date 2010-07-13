@@ -4,12 +4,30 @@ Listagem de de Produtos
 
 <% unless @produtos.blank? %>
 
-  <ul>
-    <% @produtos.each do |produto| %>
-      <li><%= produto.nome %> </li>
-    <%  end %>
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Preço</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%@produtos.each do |produto| %>
+    <tr>
+      <td><%= produto.nome %> </td>
+      <td><%= number_to_currency produto.preco %></td>
 
-  </ul>
+          <td>
+            <% form_tag itens_path, :method => :post do %>
+              <%= hidden_field_tag(:produto_id, produto.id) %>
+              <%= text_field_tag(:quantidade, 1 ) %>
+              <%=submit_tag "Adicionar"%>
+            <%end%>
+          </td>
+    </tr>
+    <%end%>
+  </tbody>
+ </table>
 
 <%  else %>
   <p> Não há produtos no sistema.</p>
