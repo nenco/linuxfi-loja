@@ -1,21 +1,21 @@
 <%  content_for :cabecalho do %>
-Listagem de de Produtos
+  Listagem de Produtos
 <%end%>
 
 <% unless @produtos.blank? %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Preço</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%@produtos.each do |produto| %>
-    <tr>
-      <td><%= produto.nome %> </td>
-      <td><%= number_to_currency produto.preco %></td>
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Preço</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@produtos.each do |produto| %>
+        <tr>
+          <td><%= produto.nome %> </td>
+          <td><%= number_to_currency produto.preco %></td>
 
           <td>
             <% form_tag itens_path, :method => :post do %>
@@ -24,10 +24,10 @@ Listagem de de Produtos
               <%=submit_tag "Adicionar"%>
             <%end%>
           </td>
-    </tr>
-    <%end%>
-  </tbody>
- </table>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
 
 <%  else %>
   <p> Não há produtos no sistema.</p>
