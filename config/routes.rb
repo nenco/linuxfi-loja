@@ -5,11 +5,15 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :produtos
   map.resources :itens, :collection => { :atualizar_pedido => :post }
 
+  map.namespace :admin do |admin|
+    admin.resources :produtos
+  end
+
   map.connect ':controller/:action'
   map.connect ':controller/:action.:format'
 
- # map.connect ':controller/:action/:id'
- # map.connect ':controller/:action/id.:format'
+  # map.connect ':controller/:action/:id'
+  # map.connect ':controller/:action/id.:format'
 
 
   
