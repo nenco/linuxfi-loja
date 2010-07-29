@@ -1,13 +1,15 @@
 <html>
   <head>
     <title>Loja - <%= @titulo %> </title>
+
+    <%= stylesheet_link_tag 'erros' %>
     <%= yield :stylesheets %>
 
 
 
   </head>
   <body>
-    
+
     <h1> <%= yield :cabecalho %>  | Loja </h1>
 
     <%= render_flash %>

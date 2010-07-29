@@ -1,8 +1,8 @@
 class CriarPedidosEItens < ActiveRecord::Migration
   def self.up
     create_table :pedidos do |t|
-      t.sting :estado, :default => 'carrinho'
-      t.timesstamps
+      t.string :estado, :default => 'carrinho'
+      t.timestamps
     end
 
     create_table :itens do |t|

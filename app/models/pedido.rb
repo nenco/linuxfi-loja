@@ -1,5 +1,6 @@
 class Pedido < ActiveRecord::Base
 
+  belongs_to :usuario, :counter_cache => true
   has_many :itens, :dependent => :destroy
   accepts_nested_attributes_for :itens
   after_save :remover_itens_zerados
