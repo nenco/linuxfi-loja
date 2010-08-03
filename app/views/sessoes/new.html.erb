@@ -1,0 +1,17 @@
+<% content_for :cabecalho do%>
+  Faça Login na sua conta
+<%end%>
+
+<%form_tag sessao_path, :method => :post do%>
+
+  <p>
+    Email: <br/><%= text_field_tag :email%>
+  </p>
+
+  <p>
+    Senha: <br/><%= password_field_tag :senha %>
+  </p>
+
+  <p><%= submit_tag "Enviar"%> </p>
+
+<% end %>

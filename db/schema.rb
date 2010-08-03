@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20100728234630) do
     t.string   "nome",                                :null => false
     t.string   "email"
     t.boolean  "administrator",    :default => false
-    t.string   "hash_da_senha"
+    t.string   "senha_em_hash"
     t.string   "salt"
     t.datetime "ultimo_acesso_em"
     t.datetime "created_at"
