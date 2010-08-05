@@ -12,9 +12,11 @@
 ActiveRecord::Schema.define(:version => 20100728234630) do
 
   create_table "itens", :force => true do |t|
-    t.integer "produto_id", :null => false
-    t.integer "pedido_id",  :null => false
-    t.integer "quantidade", :null => false
+    t.integer  "produto_id", :null => false
+    t.integer  "pedido_id",  :null => false
+    t.integer  "quantidade", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "itens", ["pedido_id"], :name => "index_itens_on_pedido_id"
@@ -39,7 +41,7 @@ ActiveRecord::Schema.define(:version => 20100728234630) do
   create_table "usuarios", :force => true do |t|
     t.string   "nome",                                :null => false
     t.string   "email"
-    t.boolean  "administrator",    :default => false
+    t.boolean  "administrador",    :default => false
     t.string   "senha_em_hash"
     t.string   "salt"
     t.datetime "ultimo_acesso_em"

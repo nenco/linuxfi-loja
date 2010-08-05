@@ -1,12 +1,20 @@
 <html>
   <head>
-    <title>Loja - <%= @titulo %> </title>
+    <title>Loja - <%= yield :cabecalho %> </title>
     <%= yield :stylesheets %>
 
+    <%= javascript_include_tag "jquery",
+      "jquery-ui",
+      "jquery-form",
+      "jrails",
+      "application"%>
 
 
   </head>
   <body>
+
+
+
     <h1>Loja - <%= yield :cabecalho %>  | Loja </h1>
 
     <%= render_flash %>

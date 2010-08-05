@@ -4,7 +4,7 @@ class CriarUsuarios < ActiveRecord::Migration
     create_table :usuarios do |t|
       t.string :nome, :null => false
       t.string :email, :nul => false
-      t.boolean :administrator, :default => false
+      t.boolean :administrador, :default => false
       t.string :senha_em_hash
       t.string :salt
       t.datetime :ultimo_acesso_em

@@ -9,7 +9,7 @@ class CriarPedidosEItens < ActiveRecord::Migration
       t.integer :produto_id, :null => false
       t.integer :pedido_id, :null => false
       t.integer :quantidade, :null => false
-      t.timesstamps
+      t.timestamps
     end
 
     add_index :itens, :pedido_id

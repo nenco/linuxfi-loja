@@ -1,22 +1,7 @@
-<% if logado? %>
-  <p>Olá <%=usuario_atual.nome %></p>
-  <p><%= link_to("Logoff",
-      sessao_path,
-      :method => :delete,
-      :confirm => "Tem certeza que deseja sair da aplicação?") %> </p>
+<%= render "compartilhados/logado" %>
+<%= render "compartilhados/menu" %>
 
-<%else%>
-  <p>
-    <%= link_to( "Faça login na aplicação", sessao_path) %>
-    <%= link_to( "Cadastre-se na aplicação", usuario_path) %>
-  </p>
-<%end%>
+<div id="carrinho">
+  <%=  render "compartilhados/carrinho" %>
+</div>
 
-<ul>
-  <li><%= link_to 'Produtos', produtos_path %></li>
-  <%  unless pedido_atual.blank? %>
-    <li>
-      <%=  link_to( "Veja valor no seu carrinho", itens_path) %>
-    </li>
-  <% end %>
-</ul>
