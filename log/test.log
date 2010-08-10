@@ -1,0 +1,1567 @@
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (215.3ms)[0m   [0mCREATE TABLE `itens` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `produto_id` int(11) NOT NULL, `pedido_id` int(11) NOT NULL, `quantidade` int(11) NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW KEYS FROM `itens`[0m
+  [4;35;1mSQL (85.7ms)[0m   [0mCREATE INDEX `index_itens_on_pedido_id` ON `itens` (`pedido_id`)[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (26.5ms)[0m   [0mCREATE TABLE `pedidos` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `estado` varchar(255) DEFAULT 'carrinho', `created_at` datetime, `updated_at` datetime, `usuario_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW KEYS FROM `pedidos`[0m
+  [4;35;1mSQL (24.1ms)[0m   [0mCREATE INDEX `index_pedidos_on_usuario_id` ON `pedidos` (`usuario_id`)[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (25.9ms)[0m   [0mCREATE TABLE `produtos` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `nome` varchar(100) NOT NULL, `descricao` text, `preco` decimal(10,2) NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mCREATE TABLE `usuarios` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `nome` varchar(255) NOT NULL, `email` varchar(255), `administrador` tinyint(1) DEFAULT 0, `senha_em_hash` varchar(255), `salt` varchar(255), `ultimo_acesso_em` datetime, `created_at` datetime, `updated_at` datetime, `pedidos_count` int(11) DEFAULT 0) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW KEYS FROM `usuarios`[0m
+  [4;35;1mSQL (25.1ms)[0m   [0mCREATE UNIQUE INDEX `index_usuarios_on_email` ON `usuarios` (`email`)[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `usuarios`[0m
+  [4;35;1mSQL (24.8ms)[0m   [0mCREATE INDEX `index_usuarios_on_ultimo_acesso_em` ON `usuarios` (`ultimo_acesso_em`)[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (15.9ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `schema_migrations`[0m
+  [4;35;1mSQL (10.6ms)[0m   [0mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSELECT version FROM `schema_migrations`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mINSERT INTO `schema_migrations` (version) VALUES ('20100728234630')[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mINSERT INTO `schema_migrations` (version) VALUES ('20100708003110')[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mINSERT INTO `schema_migrations` (version) VALUES ('20100705235647')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO `schema_migrations` (version) VALUES ('20100728223658')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO `schema_migrations` (version) VALUES ('20100728223758')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUsuario Columns (37.7ms)[0m   [0;1mSHOW FIELDS FROM `usuarios`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUsuario Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `usuarios`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUsuario Columns (3.8ms)[0m   [0;1mSHOW FIELDS FROM `usuarios`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUsuario Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `usuarios`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (61.7ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.1@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (10.5ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '6a2ab53866deb4f6e3b2259eee781be4dac639c5', '2010-08-10 00:31:01', 'Alguém 1', NULL, '2010-08-10 00:31:01', '0698399329000146a3d50e14864dd3eae5c2d864', 'alguem.1@email.com', 0)[0m
+Sent mail to alguem.1@email.com
+
+Date: Mon, 9 Aug 2010 21:31:01 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.1@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=31?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 1
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.2@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.4ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '61fa00209b7f8f3a97c6452edab1dd32fc69632f', '2010-08-10 00:31:01', 'Alguém 2', NULL, '2010-08-10 00:31:01', '334987da73d6c8ef0342358aad43e884286a9eed', 'alguem.2@email.com', 0)[0m
+Sent mail to alguem.2@email.com
+
+Date: Mon, 9 Aug 2010 21:31:01 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.2@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=32?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 2
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUsuario Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `usuarios`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (2.0ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.1@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.5ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '8b9fc04479651175616274fa622726ae9f6b50c7', '2010-08-10 00:34:12', 'Alguém 1', NULL, '2010-08-10 00:34:12', '0002637630bd20b6b90cb84f1fb627f53e784375', 'alguem.1@email.com', 0)[0m
+Sent mail to alguem.1@email.com
+
+Date: Mon, 9 Aug 2010 21:34:12 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.1@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=31?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 1
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (5.4ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.2@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (3.4ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '9bab10e9dd26c795285b8b6b16e117dd6529e80c', '2010-08-10 00:34:12', 'Alguém 2', NULL, '2010-08-10 00:34:12', '240e0747580e22fb72795590eba31707eb774c7b', 'alguem.2@email.com', 0)[0m
+Sent mail to alguem.2@email.com
+
+Date: Mon, 9 Aug 2010 21:34:12 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.2@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=32?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 2
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUsuario Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `usuarios`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@mail.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.4ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'bddbe1f7ddf3ed890c80af3f86347df37818e455', '2010-08-10 00:46:58', 'Alguém 1', NULL, '2010-08-10 00:46:58', '33863abe64675f2f89ec07ea2f3cf79127e92a6c', 'jose@mail.com', 0)[0m
+Sent mail to jose@mail.com
+
+Date: Mon, 9 Aug 2010 21:46:58 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@mail.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=31?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 1
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (46.8ms)[0m   [0;1mSELECT * FROM `usuarios` WHERE (`usuarios`.`email` = 'jose@email.com') LIMIT 1[0m
+  [4;35;1mSQL (11.3ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (3.3ms)[0m   [0;1mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@mail.com') LIMIT 1[0m
+  [4;35;1mUsuario Create (13.8ms)[0m   [0mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '96cdf8aa0a37e9a6ee3764eed818dd00af9eda4d', '2010-08-10 00:46:58', 'Alguém 2', NULL, '2010-08-10 00:46:58', 'a35f9bdf0c392d2b4046b047944c161cc6b0c155', 'jose@mail.com', 0)[0m
+Sent mail to jose@mail.com
+
+Date: Mon, 9 Aug 2010 21:46:58 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@mail.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=32?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 2
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;36;1mSQL (1.2ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.4ms)[0m   [0mSELECT * FROM `usuarios` WHERE (`usuarios`.`email` = 'outro@email.com') LIMIT 1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (9.7ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.1@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.4ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '05c27f30f68eac5c26e90fc3f0f541305e2970b6', '2010-08-10 00:46:58', 'Alguém 3', NULL, '2010-08-10 00:46:58', '8f2eda3cb353f9bf55e19635eaea0c6f7ded83ab', 'alguem.1@email.com', 0)[0m
+Sent mail to alguem.1@email.com
+
+Date: Mon, 9 Aug 2010 21:46:58 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.1@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=33?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 3
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (14.3ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.2@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.4ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '75108392be5659ae547193c6e7769ce74914212b', '2010-08-10 00:46:58', 'Alguém 4', NULL, '2010-08-10 00:46:58', '5bcdcc85f2a8762512242525d1153df5c33cf3dd', 'alguem.2@email.com', 0)[0m
+Sent mail to alguem.2@email.com
+
+Date: Mon, 9 Aug 2010 21:46:58 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.2@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=34?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 4
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (38.2ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUsuario Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `usuarios`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (1.8ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@mail.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.5ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'ed95e4a5a052e16db7b2fd06ae6ce4bf6d17d19a', '2010-08-10 00:47:15', 'Alguém 1', NULL, '2010-08-10 00:47:15', 'da7d936c6a3e055e4a594ed1e144064e9e8f55c3', 'jose@mail.com', 0)[0m
+Sent mail to jose@mail.com
+
+Date: Mon, 9 Aug 2010 21:47:15 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@mail.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=31?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 1
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (0.4ms)[0m   [0;1mSELECT * FROM `usuarios` WHERE (`usuarios`.`email` = 'jose@email.com') LIMIT 1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (0.6ms)[0m   [0;1mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@mail.com') LIMIT 1[0m
+  [4;35;1mUsuario Create (0.4ms)[0m   [0mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '931f42c7351adf8cb7c75e19da15653b2dbef269', '2010-08-10 00:47:15', 'Alguém 2', NULL, '2010-08-10 00:47:15', 'f4187325401468b8b8102fcd3dda2ac0bed28e09', 'jose@mail.com', 0)[0m
+Sent mail to jose@mail.com
+
+Date: Mon, 9 Aug 2010 21:47:15 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@mail.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=32?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 2
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;36;1mSQL (0.2ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.6ms)[0m   [0mSELECT * FROM `usuarios` WHERE (`usuarios`.`email` = 'outro@email.com') LIMIT 1[0m
+  [4;36;1mSQL (8.9ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.1@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.4ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '31c6df8237b5a08037e2247826fe857c7f3396db', '2010-08-10 00:47:15', 'Alguém 3', NULL, '2010-08-10 00:47:15', 'c9d2187b911f6b000c7f4c4444f85bd6a64411b5', 'alguem.1@email.com', 0)[0m
+Sent mail to alguem.1@email.com
+
+Date: Mon, 9 Aug 2010 21:47:15 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.1@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=33?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 3
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.7ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.2@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.4ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '843a650aad6ea95e78c0a362a2a3fb988e29213a', '2010-08-10 00:47:15', 'Alguém 4', NULL, '2010-08-10 00:47:15', 'cd5f06d32cd8d26a1777420c9923fc1922cf7482', 'alguem.2@email.com', 0)[0m
+Sent mail to alguem.2@email.com
+
+Date: Mon, 9 Aug 2010 21:47:15 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.2@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=34?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 4
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (2.0ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (6.3ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUsuario Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `usuarios`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.6ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@mail.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.5ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '19e5779ef5eff5885a78171a9cd59df55c086fb9', '2010-08-10 00:48:33', 'Alguém 1', NULL, '2010-08-10 00:48:33', 'fa0127209f99ae43e3761a0c4227fd4183c3c8f5', 'jose@mail.com', 0)[0m
+Sent mail to jose@mail.com
+
+Date: Mon, 9 Aug 2010 21:48:33 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@mail.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=31?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 1
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (0.5ms)[0m   [0;1mSELECT * FROM `usuarios` WHERE (`usuarios`.`email` = 'jose@email.com') LIMIT 1[0m
+  [4;35;1mSQL (14.0ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (1.9ms)[0m   [0;1mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@mail.com') LIMIT 1[0m
+  [4;35;1mUsuario Create (0.5ms)[0m   [0mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'f9c8be37b7f78014c08b5dcc7c8573c933c006c2', '2010-08-10 00:48:33', 'Alguém 2', NULL, '2010-08-10 00:48:33', '115f21de6e7331e1469e8f8bc14cfb9e5bb78dae', 'jose@mail.com', 0)[0m
+Sent mail to jose@mail.com
+
+Date: Mon, 9 Aug 2010 21:48:33 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@mail.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=32?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 2
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;36;1mSQL (0.2ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (1.0ms)[0m   [0mSELECT * FROM `usuarios` WHERE (`usuarios`.`email` = 'outro@email.com') LIMIT 1[0m
+  [4;36;1mSQL (4.3ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (5.6ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.1@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (7.0ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'e0df69ad33ab8b7c99c45203a48655a71d541371', '2010-08-10 00:48:33', 'Alguém 3', NULL, '2010-08-10 00:48:33', '6f6707e36f7b7bf4ab83c13146425f8759a945d2', 'alguem.1@email.com', 0)[0m
+Sent mail to alguem.1@email.com
+
+Date: Mon, 9 Aug 2010 21:48:33 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.1@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=33?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 3
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (4.3ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.2@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (4.8ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'cb33440d149785d4a7f23fd9899cf419feebe977', '2010-08-10 00:48:33', 'Alguém 4', NULL, '2010-08-10 00:48:33', '27895682be3b04db2204096d79bfbe61799c0c50', 'alguem.2@email.com', 0)[0m
+Sent mail to alguem.2@email.com
+
+Date: Mon, 9 Aug 2010 21:48:33 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.2@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=34?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 4
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUsuario Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `usuarios`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (1.1ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@mail.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.5ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '5b8cf9e9858dc097d7a2e67e3668cd9611e3dbc0', '2010-08-10 00:49:35', 'Alguém 1', NULL, '2010-08-10 00:49:35', '863a1d005829e4e087761fc33b39e6c1095dfac7', 'jose@mail.com', 0)[0m
+Sent mail to jose@mail.com
+
+Date: Mon, 9 Aug 2010 21:49:35 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@mail.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=31?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 1
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (6.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (0.4ms)[0m   [0;1mSELECT * FROM `usuarios` WHERE (`usuarios`.`email` = 'jose@email.com') LIMIT 1[0m
+  [4;35;1mSQL (2.6ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (1.8ms)[0m   [0;1mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@mail.com') LIMIT 1[0m
+  [4;35;1mUsuario Create (3.4ms)[0m   [0mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '8d9941165f50fe87e679cddd0301528d7d5b2d8f', '2010-08-10 00:49:35', 'Alguém 2', NULL, '2010-08-10 00:49:35', '1796d97203d2a4582207863bf2f00e7cac9eb02c', 'jose@mail.com', 0)[0m
+Sent mail to jose@mail.com
+
+Date: Mon, 9 Aug 2010 21:49:35 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@mail.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=32?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 2
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.4ms)[0m   [0mSELECT * FROM `usuarios` WHERE (`usuarios`.`email` = 'outro@email.com') LIMIT 1[0m
+  [4;36;1mSQL (3.6ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.1@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.5ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'bf1191d7cd8655ee515ec2ec2576b0b63c49af77', '2010-08-10 00:49:35', 'Alguém 3', NULL, '2010-08-10 00:49:35', 'caa4ad88c5095b660b02b68f31cd75ea35e827bd', 'alguem.1@email.com', 0)[0m
+Sent mail to alguem.1@email.com
+
+Date: Mon, 9 Aug 2010 21:49:35 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.1@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=33?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 3
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (4.7ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.4ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.2@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (6.5ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'b6b54c74ad5d7b8b3b7a5f8f5ed5f777a12433f9', '2010-08-10 00:49:35', 'Alguém 4', NULL, '2010-08-10 00:49:35', '74b9478f65dbff2873063814bf256851de5935bd', 'alguem.2@email.com', 0)[0m
+Sent mail to alguem.2@email.com
+
+Date: Mon, 9 Aug 2010 21:49:35 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.2@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=34?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 4
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (5.4ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (13.1ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUsuario Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `usuarios`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.4ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'e9d1ac8ab467eb7465b2491de856d487d7ee566b', '2010-08-10 00:49:46', 'Alguém 1', NULL, '2010-08-10 00:49:46', '03ddd78fa67de7201caa10b54defd01e83077c95', 'jose@email.com', 0)[0m
+Sent mail to jose@email.com
+
+Date: Mon, 9 Aug 2010 21:49:46 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=31?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 1
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (8.1ms)[0m   [0;1mSELECT * FROM `usuarios` WHERE (`usuarios`.`email` = 'jose@email.com') LIMIT 1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (4.0ms)[0m   [0;1mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@email.com') LIMIT 1[0m
+  [4;35;1mUsuario Create (0.6ms)[0m   [0mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '1001f9caeb3f3ed0227853a7de20c244abd15d94', '2010-08-10 00:49:46', 'Alguém 2', NULL, '2010-08-10 00:49:46', '0bab7981266533395d9cca92d4470d232e562ff4', 'jose@email.com', 0)[0m
+Sent mail to jose@email.com
+
+Date: Mon, 9 Aug 2010 21:49:46 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=32?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 2
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;36;1mSQL (1.2ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (1.5ms)[0m   [0mSELECT * FROM `usuarios` WHERE (`usuarios`.`email` = 'outro@email.com') LIMIT 1[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (5.7ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.1@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (5.9ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'edc7513545547186a244b3149aff37b37af8f90a', '2010-08-10 00:49:46', 'Alguém 3', NULL, '2010-08-10 00:49:46', '7d55c8d233be907fe4a6b35d28b60c15fd0f349c', 'alguem.1@email.com', 0)[0m
+Sent mail to alguem.1@email.com
+
+Date: Mon, 9 Aug 2010 21:49:46 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.1@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=33?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 3
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.2@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.4ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '6b3fd48717688ca792c1fc18cf7e75af968efb85', '2010-08-10 00:49:46', 'Alguém 4', NULL, '2010-08-10 00:49:46', '59c6a8cdc7e670d00b8174975f5c9e7b3040da02', 'alguem.2@email.com', 0)[0m
+Sent mail to alguem.2@email.com
+
+Date: Mon, 9 Aug 2010 21:49:46 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.2@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=34?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 4
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUsuario Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `usuarios`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (1.4ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (1.4ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '6e9e4ac0ac4ba1ffcfb105158af0f1f8aea1069d', '2010-08-10 00:50:05', 'Alguém 1', NULL, '2010-08-10 00:50:05', '7b81ff8feabbafc0df97fcf51a850a8c13911785', 'jose@email.com', 0)[0m
+Sent mail to jose@email.com
+
+Date: Mon, 9 Aug 2010 21:50:05 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=31?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 1
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (0.5ms)[0m   [0;1mSELECT * FROM `usuarios` WHERE (`usuarios`.`email` = 'jose@email.com') LIMIT 1[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (0.5ms)[0m   [0;1mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@email.com') LIMIT 1[0m
+  [4;35;1mUsuario Create (0.4ms)[0m   [0mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'baf60d6cc18612642fe69d8dd8253e57ea3c0365', '2010-08-10 00:50:05', 'Alguém 2', NULL, '2010-08-10 00:50:05', '70728587f649286794787f928a6dcbd83c05d917', 'jose@email.com', 0)[0m
+Sent mail to jose@email.com
+
+Date: Mon, 9 Aug 2010 21:50:05 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=32?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 2
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;36;1mSQL (0.2ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT * FROM `usuarios` WHERE (`usuarios`.`email` = 'outro@email.com') LIMIT 1[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.1@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.4ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '1f0589d680d4258242bbd920075bd300e0a1aecc', '2010-08-10 00:50:05', 'Alguém 3', NULL, '2010-08-10 00:50:05', '538bc04c037bcbf94dc75c2b3694201f946d489c', 'alguem.1@email.com', 0)[0m
+Sent mail to alguem.1@email.com
+
+Date: Mon, 9 Aug 2010 21:50:05 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.1@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=33?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 3
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.2@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.4ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '966d2a0ed272e3aa2a567e57c1ce679cbb3648d9', '2010-08-10 00:50:05', 'Alguém 4', NULL, '2010-08-10 00:50:05', '5d81e2644fb58d8a86d27b2c96d2bd8830a6c63e', 'alguem.2@email.com', 0)[0m
+Sent mail to alguem.2@email.com
+
+Date: Mon, 9 Aug 2010 21:50:05 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.2@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=34?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 4
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (2.7ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUsuario Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `usuarios`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.4ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '4d1a57de78d00868b07c3e762de2783a888e2787', '2010-08-10 00:54:31', 'Alguém 1', NULL, '2010-08-10 00:54:31', '31fb1543243d669186066aa3af7b0b32d82069bf', 'jose@email.com', 0)[0m
+Sent mail to jose@email.com
+
+Date: Mon, 9 Aug 2010 21:54:31 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=31?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 1
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.4ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.1@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.4ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'a82a03b3c2a3da4f6601676dcc05cf4281e1bfe6', '2010-08-10 00:54:31', 'Alguém 2', NULL, '2010-08-10 00:54:31', '9280a397d6b339bac0ea68fbe7994eb450163eaa', 'alguem.1@email.com', 0)[0m
+Sent mail to alguem.1@email.com
+
+Date: Mon, 9 Aug 2010 21:54:31 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.1@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=32?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 2
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mPedido Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `pedidos`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mPedido Create (0.3ms)[0m   [0;1mINSERT INTO `pedidos` (`created_at`, `updated_at`, `usuario_id`, `estado`) VALUES('2010-08-10 00:54:31', '2010-08-10 00:54:31', 30, 'carrinho')[0m
+  [4;35;1mUsuario Load (0.3ms)[0m   [0mSELECT * FROM `usuarios` WHERE (`usuarios`.`id` = 30) [0m
+  [4;36;1mUsuario Update (36.0ms)[0m   [0;1mUPDATE `usuarios` SET `pedidos_count` = COALESCE(`pedidos_count`, 0) + 1 WHERE (`id` = 30) [0m
+  [4;35;1mItem Load (8.7ms)[0m   [0mSELECT * FROM `itens` WHERE (`itens`.pedido_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (17.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (0.6ms)[0m   [0;1mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@email.com') LIMIT 1[0m
+  [4;35;1mUsuario Create (11.3ms)[0m   [0mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '66a8c8472d0df65942caad3160e69cdbfcbbf258', '2010-08-10 00:54:31', 'Alguém 3', NULL, '2010-08-10 00:54:31', '0aede71e6715d6de4b697962cb94ae1ac4dca97f', 'jose@email.com', 0)[0m
+Sent mail to jose@email.com
+
+Date: Mon, 9 Aug 2010 21:54:31 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=33?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 3
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;36;1mSQL (0.2ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.7ms)[0m   [0mSELECT * FROM `usuarios` WHERE (`usuarios`.`email` = 'jose@email.com') LIMIT 1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.4ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'd5bb1a69a300334aaa5b02717d337487d3583586', '2010-08-10 00:54:31', 'Alguém 4', NULL, '2010-08-10 00:54:31', 'a6a70721b4c64453e6ccb336f24adf13865472e2', 'jose@email.com', 0)[0m
+Sent mail to jose@email.com
+
+Date: Mon, 9 Aug 2010 21:54:31 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=34?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 4
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (0.6ms)[0m   [0;1mSELECT * FROM `usuarios` WHERE (`usuarios`.`email` = 'outro@email.com') LIMIT 1[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (0.6ms)[0m   [0;1mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.2@email.com') LIMIT 1[0m
+  [4;35;1mUsuario Create (0.4ms)[0m   [0mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'c893211242b8eb56ae1caedbf653449ab7d687af', '2010-08-10 00:54:31', 'Alguém 5', NULL, '2010-08-10 00:54:31', 'c524da1cd80b7fd533d292e72765899bce45640e', 'alguem.2@email.com', 0)[0m
+Sent mail to alguem.2@email.com
+
+Date: Mon, 9 Aug 2010 21:54:31 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.2@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=35?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 5
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;36;1mSQL (0.2ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (0.5ms)[0m   [0;1mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.3@email.com') LIMIT 1[0m
+  [4;35;1mUsuario Create (0.4ms)[0m   [0mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '7b1648e871e64b6b7a64215fb6c88e5815456783', '2010-08-10 00:54:31', 'Alguém 6', NULL, '2010-08-10 00:54:31', '5ce4f5c1d6d9ceaa1060fdf63afd97cb93d3ddd4', 'alguem.3@email.com', 0)[0m
+Sent mail to alguem.3@email.com
+
+Date: Mon, 9 Aug 2010 21:54:31 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.3@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=36?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 6
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;36;1mSQL (0.9ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUsuario Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `usuarios`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.6ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.6ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '6a99981f6dbeaf9d7e353cf3ee29deee0e12def3', '2010-08-10 00:55:30', 'Alguém 1', NULL, '2010-08-10 00:55:30', 'b32f6d7f8bd5b576e040c3c8389aea9e80f37dcd', 'jose@email.com', 0)[0m
+Sent mail to jose@email.com
+
+Date: Mon, 9 Aug 2010 21:55:30 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=31?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 1
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.6ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.1@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.5ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '54399954d31af86b219e2739b4462e078d16b611', '2010-08-10 00:55:30', 'Alguém 2', NULL, '2010-08-10 00:55:30', 'f04d45accdf78e0f6a5a358d0dd2838d5076e4bc', 'alguem.1@email.com', 0)[0m
+Sent mail to alguem.1@email.com
+
+Date: Mon, 9 Aug 2010 21:55:30 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.1@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=32?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 2
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mPedido Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `pedidos`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mPedido Create (0.4ms)[0m   [0;1mINSERT INTO `pedidos` (`created_at`, `updated_at`, `usuario_id`, `estado`) VALUES('2010-08-10 00:55:30', '2010-08-10 00:55:30', 36, 'carrinho')[0m
+  [4;35;1mUsuario Load (0.4ms)[0m   [0mSELECT * FROM `usuarios` WHERE (`usuarios`.`id` = 36) [0m
+  [4;36;1mUsuario Update (0.4ms)[0m   [0;1mUPDATE `usuarios` SET `pedidos_count` = COALESCE(`pedidos_count`, 0) + 1 WHERE (`id` = 36) [0m
+  [4;35;1mItem Load (0.5ms)[0m   [0mSELECT * FROM `itens` WHERE (`itens`.pedido_id = 2) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mPedido Load (14.2ms)[0m   [0mSELECT * FROM `pedidos` WHERE (`pedidos`.`usuario_id` = 36 AND `pedidos`.`estado` = 'carrinho') LIMIT 1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.4ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.4ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'e768321c06faa3d09fd8e0c6a56df0bb7c645b6f', '2010-08-10 00:55:30', 'Alguém 3', NULL, '2010-08-10 00:55:30', 'df1095147312984563fd8a7df7dae86ba8ffc1f9', 'jose@email.com', 0)[0m
+Sent mail to jose@email.com
+
+Date: Mon, 9 Aug 2010 21:55:30 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=33?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 3
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (0.5ms)[0m   [0;1mSELECT * FROM `usuarios` WHERE (`usuarios`.`email` = 'jose@email.com') LIMIT 1[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (0.3ms)[0m   [0;1mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@email.com') LIMIT 1[0m
+  [4;35;1mUsuario Create (0.4ms)[0m   [0mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '1aaccf7836d4e66ed506a323a12c18d4bd9b211a', '2010-08-10 00:55:30', 'Alguém 4', NULL, '2010-08-10 00:55:30', 'ca7d38ae3e709fc3dadf7859fa972f9e50f5efd0', 'jose@email.com', 0)[0m
+Sent mail to jose@email.com
+
+Date: Mon, 9 Aug 2010 21:55:30 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=34?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 4
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;36;1mSQL (0.2ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.4ms)[0m   [0mSELECT * FROM `usuarios` WHERE (`usuarios`.`email` = 'outro@email.com') LIMIT 1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.2@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.4ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'e55c32bfb2fff35971a893003bd381882f142420', '2010-08-10 00:55:30', 'Alguém 5', NULL, '2010-08-10 00:55:30', 'd212d22c7f6e1b6e32b058dfc19f2975d41917ff', 'alguem.2@email.com', 0)[0m
+Sent mail to alguem.2@email.com
+
+Date: Mon, 9 Aug 2010 21:55:30 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.2@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=35?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 5
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (10.3ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.7ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.3@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.4ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '9823bfddbcae4403abdfbd06a887ff24219c251a', '2010-08-10 00:55:30', 'Alguém 6', NULL, '2010-08-10 00:55:30', '7ee6a47ddf82ca4a7d6e612a4f87505d4aff3a32', 'alguem.3@email.com', 0)[0m
+Sent mail to alguem.3@email.com
+
+Date: Mon, 9 Aug 2010 21:55:30 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.3@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=36?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 6
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.3ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUsuario Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `usuarios`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.6ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (6.8ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'd7e39e62d6cc483e04b49dba848ecb55cc78f868', '2010-08-10 00:58:27', 'Alguém 1', NULL, '2010-08-10 00:58:27', '7ead8107d73403950a31faca82f593678dc8ec34', 'jose@email.com', 0)[0m
+Sent mail to jose@email.com
+
+Date: Mon, 9 Aug 2010 21:58:27 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=31?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 1
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.1@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.5ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'a3eb17d6054ff0d2d73e9919bfe2deb2e2ebdd94', '2010-08-10 00:58:27', 'Alguém 2', NULL, '2010-08-10 00:58:27', '667aea3d680ff10831fff523c57e3d59b9bc25a7', 'alguem.1@email.com', 0)[0m
+Sent mail to alguem.1@email.com
+
+Date: Mon, 9 Aug 2010 21:58:27 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.1@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=32?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 2
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mPedido Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `pedidos`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mPedido Create (0.5ms)[0m   [0;1mINSERT INTO `pedidos` (`created_at`, `updated_at`, `usuario_id`, `estado`) VALUES('2010-08-10 00:58:27', '2010-08-10 00:58:27', 42, 'carrinho')[0m
+  [4;35;1mUsuario Load (0.6ms)[0m   [0mSELECT * FROM `usuarios` WHERE (`usuarios`.`id` = 42) [0m
+  [4;36;1mUsuario Update (0.5ms)[0m   [0;1mUPDATE `usuarios` SET `pedidos_count` = COALESCE(`pedidos_count`, 0) + 1 WHERE (`id` = 42) [0m
+  [4;35;1mItem Load (0.6ms)[0m   [0mSELECT * FROM `itens` WHERE (`itens`.pedido_id = 3) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mPedido Load (0.5ms)[0m   [0mSELECT * FROM `pedidos` WHERE (`pedidos`.`usuario_id` = 42 AND `pedidos`.`estado` = 'carrinho') LIMIT 1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.6ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.4ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'dfdb67605437e3c90338bd647205582df59cbc4e', '2010-08-10 00:58:27', 'Alguém 3', NULL, '2010-08-10 00:58:27', 'e550e1b6716cb5467060c6c2b99a49849ee75385', 'jose@email.com', 0)[0m
+Sent mail to jose@email.com
+
+Date: Mon, 9 Aug 2010 21:58:27 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=33?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 3
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.3ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.7ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.2@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.4ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'f2c9d587999851645ab31f403b17c74d64c60bae', '2010-08-10 00:58:27', 'Alguém 4', NULL, '2010-08-10 00:58:27', '81e9323cc012dc6cd11f2f0122528061f60f7ffd', 'alguem.2@email.com', 0)[0m
+Sent mail to alguem.2@email.com
+
+Date: Mon, 9 Aug 2010 21:58:27 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.2@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=34?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 4
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mPedido Create (0.4ms)[0m   [0mINSERT INTO `pedidos` (`created_at`, `updated_at`, `usuario_id`, `estado`) VALUES('2010-08-10 00:58:27', '2010-08-10 00:58:27', 44, 'carrinho')[0m
+  [4;36;1mUsuario Load (0.4ms)[0m   [0;1mSELECT * FROM `usuarios` WHERE (`usuarios`.`id` = 44) [0m
+  [4;35;1mUsuario Update (0.4ms)[0m   [0mUPDATE `usuarios` SET `pedidos_count` = COALESCE(`pedidos_count`, 0) + 1 WHERE (`id` = 44) [0m
+  [4;36;1mItem Load (0.5ms)[0m   [0;1mSELECT * FROM `itens` WHERE (`itens`.pedido_id = 4) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Update (0.4ms)[0m   [0mUPDATE `usuarios` SET `pedidos_count` = COALESCE(`pedidos_count`, 0) - 1 WHERE (`id` = 44) [0m
+  [4;36;1mPedido Destroy (7.9ms)[0m   [0;1mDELETE FROM `pedidos` WHERE `id` = 4[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mPedido Load (0.5ms)[0m   [0;1mSELECT * FROM `pedidos` WHERE (`pedidos`.`usuario_id` = 44 AND `pedidos`.`estado` = 'carrinho') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mPedido Create (0.4ms)[0m   [0;1mINSERT INTO `pedidos` (`created_at`, `updated_at`, `usuario_id`, `estado`) VALUES('2010-08-10 00:58:27', '2010-08-10 00:58:27', 44, 'carrinho')[0m
+  [4;35;1mUsuario Load (0.6ms)[0m   [0mSELECT * FROM `usuarios` WHERE (`usuarios`.`id` = 44) [0m
+  [4;36;1mUsuario Update (0.4ms)[0m   [0;1mUPDATE `usuarios` SET `pedidos_count` = COALESCE(`pedidos_count`, 0) + 1 WHERE (`id` = 44) [0m
+  [4;35;1mItem Load (0.6ms)[0m   [0mSELECT * FROM `itens` WHERE (`itens`.pedido_id = 5) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (17.0ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (0.5ms)[0m   [0;1mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@email.com') LIMIT 1[0m
+  [4;35;1mUsuario Create (0.5ms)[0m   [0mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '06dd8cbf27a5305094ee5c58374d6b1bf6ead39a', '2010-08-10 00:58:27', 'Alguém 5', NULL, '2010-08-10 00:58:27', '5c8ff56a85ca500745a28666d2cf637a2a9f2470', 'jose@email.com', 0)[0m
+Sent mail to jose@email.com
+
+Date: Mon, 9 Aug 2010 21:58:27 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=35?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 5
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;36;1mSQL (0.2ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (0.5ms)[0m   [0;1mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.3@email.com') LIMIT 1[0m
+  [4;35;1mUsuario Create (0.5ms)[0m   [0mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '50749d3d1aaaa6d9d7a7aaf092ff1f8801a609d3', '2010-08-10 00:58:27', 'Alguém 6', NULL, '2010-08-10 00:58:27', '3036c7037ffc955711e82a3e01545dd2620c7d6f', 'alguem.3@email.com', 0)[0m
+Sent mail to alguem.3@email.com
+
+Date: Mon, 9 Aug 2010 21:58:27 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.3@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=36?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 6
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;36;1mSQL (0.2ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mPedido Create (0.4ms)[0m   [0;1mINSERT INTO `pedidos` (`created_at`, `updated_at`, `usuario_id`, `estado`) VALUES('2010-08-10 00:58:27', '2010-08-10 00:58:27', 46, 'carrinho')[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT * FROM `usuarios` WHERE (`usuarios`.`id` = 46) [0m
+  [4;36;1mUsuario Update (0.5ms)[0m   [0;1mUPDATE `usuarios` SET `pedidos_count` = COALESCE(`pedidos_count`, 0) + 1 WHERE (`id` = 46) [0m
+  [4;35;1mItem Load (0.6ms)[0m   [0mSELECT * FROM `itens` WHERE (`itens`.pedido_id = 6) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Update (0.5ms)[0m   [0;1mUPDATE `usuarios` SET `pedidos_count` = COALESCE(`pedidos_count`, 0) - 1 WHERE (`id` = 46) [0m
+  [4;35;1mPedido Destroy (0.4ms)[0m   [0mDELETE FROM `pedidos` WHERE `id` = 6[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mPedido Load (0.6ms)[0m   [0mSELECT * FROM `pedidos` WHERE (`pedidos`.`usuario_id` = 46 AND `pedidos`.`estado` = 'carrinho') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mPedido Create (0.3ms)[0m   [0mINSERT INTO `pedidos` (`created_at`, `updated_at`, `usuario_id`, `estado`) VALUES('2010-08-10 00:58:27', '2010-08-10 00:58:27', 46, 'carrinho')[0m
+  [4;36;1mUsuario Load (0.4ms)[0m   [0;1mSELECT * FROM `usuarios` WHERE (`usuarios`.`id` = 46) [0m
+  [4;35;1mUsuario Update (0.4ms)[0m   [0mUPDATE `usuarios` SET `pedidos_count` = COALESCE(`pedidos_count`, 0) + 1 WHERE (`id` = 46) [0m
+  [4;36;1mItem Load (0.5ms)[0m   [0;1mSELECT * FROM `itens` WHERE (`itens`.pedido_id = 7) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM `pedidos` [0m
+  [4;35;1mSQL (0.9ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (4.1ms)[0m   [0;1mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@email.com') LIMIT 1[0m
+  [4;35;1mUsuario Create (0.5ms)[0m   [0mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'dfcad8ef689be94864375f4624187c750a939197', '2010-08-10 00:58:27', 'Alguém 7', NULL, '2010-08-10 00:58:27', '0a493eebdd12e089c2a4a01bcf0492945c1d8369', 'jose@email.com', 0)[0m
+Sent mail to jose@email.com
+
+Date: Mon, 9 Aug 2010 21:58:27 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=37?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 7
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;36;1mSQL (0.2ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT * FROM `usuarios` WHERE (`usuarios`.`email` = 'jose@email.com') LIMIT 1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.3ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '35f62e25618b4e9d19633d4afd2f344e33e755b8', '2010-08-10 00:58:27', 'Alguém 8', NULL, '2010-08-10 00:58:27', '5de31ae02efa77a495ed3c0c2d248199e1be9783', 'jose@email.com', 0)[0m
+Sent mail to jose@email.com
+
+Date: Mon, 9 Aug 2010 21:58:27 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=38?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 8
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (0.5ms)[0m   [0;1mSELECT * FROM `usuarios` WHERE (`usuarios`.`email` = 'outro@email.com') LIMIT 1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (0.7ms)[0m   [0;1mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.4@email.com') LIMIT 1[0m
+  [4;35;1mUsuario Create (6.7ms)[0m   [0mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'd2c10cd38c1dd1e9f83340bc52ef386547e76d59', '2010-08-10 00:58:27', 'Alguém 9', NULL, '2010-08-10 00:58:27', 'b209db0dc1dbaef157f5e36ddc15ae3844b1cbd9', 'alguem.4@email.com', 0)[0m
+Sent mail to alguem.4@email.com
+
+Date: Mon, 9 Aug 2010 21:58:27 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.4@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=39?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 9
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;36;1mSQL (0.2ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (0.5ms)[0m   [0;1mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.5@email.com') LIMIT 1[0m
+  [4;35;1mUsuario Create (0.4ms)[0m   [0mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '4b6eb9256b98bf9f7693416e946b94c811df71f5', '2010-08-10 00:58:27', 'Alguém 10', NULL, '2010-08-10 00:58:27', '76c514601f5d6fee17a76308160c638764b912e6', 'alguem.5@email.com', 0)[0m
+Sent mail to alguem.5@email.com
+
+Date: Mon, 9 Aug 2010 21:58:28 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.5@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=31=30?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 10
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;36;1mSQL (0.4ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUsuario Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `usuarios`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.4ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '33ba98490e7682b3dff1ddbccc87348adb4604ed', '2010-08-10 00:58:46', 'Alguém 1', NULL, '2010-08-10 00:58:46', 'a69e23b93d823244f6c8b393b03ee7cd57503ea9', 'jose@email.com', 0)[0m
+Sent mail to jose@email.com
+
+Date: Mon, 9 Aug 2010 21:58:46 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=31?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 1
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.1@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.4ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'f3d97190f0fef2196eb7780de144e93a321b4e0f', '2010-08-10 00:58:46', 'Alguém 2', NULL, '2010-08-10 00:58:46', 'b8f816a9d231b8980144fe4b36ca0c93e199bd0e', 'alguem.1@email.com', 0)[0m
+Sent mail to alguem.1@email.com
+
+Date: Mon, 9 Aug 2010 21:58:46 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.1@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=32?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 2
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mPedido Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `pedidos`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mPedido Create (0.4ms)[0m   [0;1mINSERT INTO `pedidos` (`created_at`, `updated_at`, `usuario_id`, `estado`) VALUES('2010-08-10 00:58:46', '2010-08-10 00:58:46', 52, 'carrinho')[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT * FROM `usuarios` WHERE (`usuarios`.`id` = 52) [0m
+  [4;36;1mUsuario Update (0.4ms)[0m   [0;1mUPDATE `usuarios` SET `pedidos_count` = COALESCE(`pedidos_count`, 0) + 1 WHERE (`id` = 52) [0m
+  [4;35;1mItem Load (0.5ms)[0m   [0mSELECT * FROM `itens` WHERE (`itens`.pedido_id = 8) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mPedido Load (0.5ms)[0m   [0mSELECT * FROM `pedidos` WHERE (`pedidos`.`usuario_id` = 52 AND `pedidos`.`estado` = 'carrinho') LIMIT 1[0m
+  [4;36;1mSQL (5.6ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.4ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '7b156b63dc992ae4037c87a45fe9eb12bcdd6446', '2010-08-10 00:58:46', 'Alguém 3', NULL, '2010-08-10 00:58:46', '7434d13b9f4f7e58ec8a2652436050c1714394e2', 'jose@email.com', 0)[0m
+Sent mail to jose@email.com
+
+Date: Mon, 9 Aug 2010 21:58:46 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=33?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 3
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.6ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.2@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (0.5ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'b8cd3ec55213a5b72186461b11e35626a0e5f800', '2010-08-10 00:58:46', 'Alguém 4', NULL, '2010-08-10 00:58:46', '472a1ad9c091c791d0be8cdb0899f1ad37487c8d', 'alguem.2@email.com', 0)[0m
+Sent mail to alguem.2@email.com
+
+Date: Mon, 9 Aug 2010 21:58:46 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.2@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=34?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 4
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mPedido Create (0.4ms)[0m   [0mINSERT INTO `pedidos` (`created_at`, `updated_at`, `usuario_id`, `estado`) VALUES('2010-08-10 00:58:46', '2010-08-10 00:58:46', 54, 'carrinho')[0m
+  [4;36;1mUsuario Load (0.5ms)[0m   [0;1mSELECT * FROM `usuarios` WHERE (`usuarios`.`id` = 54) [0m
+  [4;35;1mUsuario Update (0.4ms)[0m   [0mUPDATE `usuarios` SET `pedidos_count` = COALESCE(`pedidos_count`, 0) + 1 WHERE (`id` = 54) [0m
+  [4;36;1mItem Load (0.6ms)[0m   [0;1mSELECT * FROM `itens` WHERE (`itens`.pedido_id = 9) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Update (0.5ms)[0m   [0mUPDATE `usuarios` SET `pedidos_count` = COALESCE(`pedidos_count`, 0) - 1 WHERE (`id` = 54) [0m
+  [4;36;1mPedido Destroy (0.4ms)[0m   [0;1mDELETE FROM `pedidos` WHERE `id` = 9[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mPedido Load (0.6ms)[0m   [0;1mSELECT * FROM `pedidos` WHERE (`pedidos`.`usuario_id` = 54 AND `pedidos`.`estado` = 'carrinho') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mPedido Create (0.4ms)[0m   [0;1mINSERT INTO `pedidos` (`created_at`, `updated_at`, `usuario_id`, `estado`) VALUES('2010-08-10 00:58:46', '2010-08-10 00:58:46', 54, 'carrinho')[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT * FROM `usuarios` WHERE (`usuarios`.`id` = 54) [0m
+  [4;36;1mUsuario Update (0.4ms)[0m   [0;1mUPDATE `usuarios` SET `pedidos_count` = COALESCE(`pedidos_count`, 0) + 1 WHERE (`id` = 54) [0m
+  [4;35;1mItem Load (0.5ms)[0m   [0mSELECT * FROM `itens` WHERE (`itens`.pedido_id = 10) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (0.5ms)[0m   [0;1mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@email.com') LIMIT 1[0m
+  [4;35;1mUsuario Create (0.4ms)[0m   [0mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'fd7483cf78377f8f4e6c86e724aa8815b753d1fa', '2010-08-10 00:58:46', 'Alguém 5', NULL, '2010-08-10 00:58:46', '755c829757c57cfcf256671ffd2ed294c449aacd', 'jose@email.com', 0)[0m
+Sent mail to jose@email.com
+
+Date: Mon, 9 Aug 2010 21:58:46 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=35?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 5
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;36;1mSQL (0.2ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (0.6ms)[0m   [0;1mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.3@email.com') LIMIT 1[0m
+  [4;35;1mUsuario Create (0.5ms)[0m   [0mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '4b4507d4c8f9f325a7c858293803f6ebfcc903dd', '2010-08-10 00:58:46', 'Alguém 6', NULL, '2010-08-10 00:58:46', '96c05b9d06fac1ef166e084d7b4a27b9be9ab1f6', 'alguem.3@email.com', 0)[0m
+Sent mail to alguem.3@email.com
+
+Date: Mon, 9 Aug 2010 21:58:46 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.3@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=36?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 6
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;36;1mSQL (0.2ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mPedido Create (0.4ms)[0m   [0;1mINSERT INTO `pedidos` (`created_at`, `updated_at`, `usuario_id`, `estado`) VALUES('2010-08-10 00:58:46', '2010-08-10 00:58:46', 56, 'carrinho')[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT * FROM `usuarios` WHERE (`usuarios`.`id` = 56) [0m
+  [4;36;1mUsuario Update (0.4ms)[0m   [0;1mUPDATE `usuarios` SET `pedidos_count` = COALESCE(`pedidos_count`, 0) + 1 WHERE (`id` = 56) [0m
+  [4;35;1mItem Load (0.5ms)[0m   [0mSELECT * FROM `itens` WHERE (`itens`.pedido_id = 11) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Update (0.4ms)[0m   [0;1mUPDATE `usuarios` SET `pedidos_count` = COALESCE(`pedidos_count`, 0) - 1 WHERE (`id` = 56) [0m
+  [4;35;1mPedido Destroy (0.4ms)[0m   [0mDELETE FROM `pedidos` WHERE `id` = 11[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mPedido Load (0.5ms)[0m   [0mSELECT * FROM `pedidos` WHERE (`pedidos`.`usuario_id` = 56 AND `pedidos`.`estado` = 'carrinho') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mPedido Create (0.3ms)[0m   [0mINSERT INTO `pedidos` (`created_at`, `updated_at`, `usuario_id`, `estado`) VALUES('2010-08-10 00:58:46', '2010-08-10 00:58:46', 56, 'carrinho')[0m
+  [4;36;1mUsuario Load (0.4ms)[0m   [0;1mSELECT * FROM `usuarios` WHERE (`usuarios`.`id` = 56) [0m
+  [4;35;1mUsuario Update (0.4ms)[0m   [0mUPDATE `usuarios` SET `pedidos_count` = COALESCE(`pedidos_count`, 0) + 1 WHERE (`id` = 56) [0m
+  [4;36;1mItem Load (0.5ms)[0m   [0;1mSELECT * FROM `itens` WHERE (`itens`.pedido_id = 12) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM `pedidos` [0m
+  [4;35;1mSQL (0.9ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (0.4ms)[0m   [0;1mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@email.com') LIMIT 1[0m
+  [4;35;1mUsuario Create (0.4ms)[0m   [0mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, 'eb983c63938b1db858b10afe7d4b16d64144bb5b', '2010-08-10 00:58:46', 'Alguém 7', NULL, '2010-08-10 00:58:46', 'd2234bac286376d928254487b3e48126c6a5e75e', 'jose@email.com', 0)[0m
+Sent mail to jose@email.com
+
+Date: Mon, 9 Aug 2010 21:58:46 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=37?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 7
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;36;1mSQL (0.2ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.6ms)[0m   [0mSELECT * FROM `usuarios` WHERE (`usuarios`.`email` = 'jose@email.com') LIMIT 1[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mUsuario Load (0.5ms)[0m   [0mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'jose@email.com') LIMIT 1[0m
+  [4;36;1mUsuario Create (5.3ms)[0m   [0;1mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '087e106c71f63241ec0415fdbfed97bc8a46e901', '2010-08-10 00:58:46', 'Alguém 8', NULL, '2010-08-10 00:58:46', '6c85544109821e04c04891d7632dbba7e9f3f59b', 'jose@email.com', 0)[0m
+Sent mail to jose@email.com
+
+Date: Mon, 9 Aug 2010 21:58:46 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: jose@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=38?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 8
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (0.4ms)[0m   [0;1mSELECT * FROM `usuarios` WHERE (`usuarios`.`email` = 'outro@email.com') LIMIT 1[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (0.5ms)[0m   [0;1mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.4@email.com') LIMIT 1[0m
+  [4;35;1mUsuario Create (0.4ms)[0m   [0mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '0955d5fb8cba2b96688c918f339a86d0c6a7a36b', '2010-08-10 00:58:46', 'Alguém 9', NULL, '2010-08-10 00:58:46', 'aff60713af37141a7a3f3e159757a59508be9eeb', 'alguem.4@email.com', 0)[0m
+Sent mail to alguem.4@email.com
+
+Date: Mon, 9 Aug 2010 21:58:46 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.4@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=39?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 9
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;36;1mSQL (0.2ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mUsuario Load (0.5ms)[0m   [0;1mSELECT `usuarios`.id FROM `usuarios` WHERE (`usuarios`.`email` = BINARY 'alguem.5@email.com') LIMIT 1[0m
+  [4;35;1mUsuario Create (0.5ms)[0m   [0mINSERT INTO `usuarios` (`administrador`, `salt`, `created_at`, `nome`, `ultimo_acesso_em`, `updated_at`, `senha_em_hash`, `email`, `pedidos_count`) VALUES(0, '82b06fd03124272c47965a0ce84005460421a343', '2010-08-10 00:58:46', 'Alguém 10', NULL, '2010-08-10 00:58:46', 'ef782363c5222eaa44ca704dd3522dfaedfe21d1', 'alguem.5@email.com', 0)[0m
+Sent mail to alguem.5@email.com
+
+Date: Mon, 9 Aug 2010 21:58:46 -0300
+From: linuxfi,
+	 ror,
+	 lulho,
+	 2010@gmail.com
+To: alguem.5@email.com
+Subject: =?utf-8?Q?=5BMinhaLoja=5D_=2D_Ol=C3=A1_Algu=C3=A9m_=31=30?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+OláAlguém 10
+
+Seja bem vindo a nossa loja:
+
+Equipe MinhaLoja.com.br
+  [4;36;1mSQL (0.2ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mROLLBACK[0m
