@@ -1,18 +1,27 @@
 <% admin_form_for_produto do |f| %>
-<%=f.error_messages%>
+<%=  f.error_messages%>
 
 <p>Nome: <br/>
-  <%=f.text_field :nome%>
+  <%=  f.text_field :nome%>
 </p>
 
 <p>Preço: <br/>
-  <%=f.text_field :preco%>
+  <%=  f.text_field :preco%>
 </p>
+
+<p>Imagem: <br/>
+  <%=  f.file_field :imagem %>
+  <% if @produto.imagem.file? %>
+   <br/>
+   Imagem Atual: <%= image_tag @produto.imagem.url(:thumb) %>
+   <%end%>
+</p>
+
 
 <p>Descrição: <br/>
-  <%=f.text_area :descricao%>
+  <%=  f.text_area :descricao%>
 </p>
 
-<p> <%=submit_tag "enviar" %></p>
+<p> <%=  submit_tag "enviar" %></p>
 
 <%  end %>

@@ -2,3 +2,5 @@
 *.pid
 nbproject/*
 coverage/*
+public/system/*
+config/solr/data/*
