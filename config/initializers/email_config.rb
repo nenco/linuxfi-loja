@@ -4,6 +4,6 @@ ActionMailer::Base.smtp_settings = {
   :port => 587,
   :domain => "gmail.com",
   :authentication => :plain,
-  :user_name => "linuxfi,ror,lulho,2010@gmail.com",
+  :user_name => "linuxfi.ror.julho.2010@gmail.com",
   :password => "rubyonrails"
 }
