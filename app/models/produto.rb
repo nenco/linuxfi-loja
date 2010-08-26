@@ -1,9 +1,9 @@
 class Produto < ActiveRecord::Base
 
-  searchable do
-    text :nome, :descricao
-    float :preco
-  end
+#  searchable do
+#    text :nome, :descricao
+#    float :preco
+#  end
   
   #set_table_name 'produto' //setar o nome da tabela
   validates_presence_of :nome, :preco
